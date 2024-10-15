@@ -1,14 +1,26 @@
+#goal: want to find a partition of both arrays where:
+#   the left of the first array is less than the right of the second
+#   the left of the second array is less than the right of the first
+#       then we have found the middle of the combined array without combining and sorting
+
+
+
 def findMedianSortedArrays(nums1, nums2):
+
     m = len(nums1)
     n = len(nums2)
 
+    #interval for best partition, will hone into the correct partition
     partMin = 0
     partMax = m
 
     totalLength = m + n
+    # using integer addition since the values will be used for the index and must be integers
     mid = (m + n + 1) // 2
     
+    #binary search until a correct partition for each array is found
     while partMin <= partMax:
+        #trial partition indexes
         split1 = (partMin + partMax) // 2
         split2 = mid - split1
 
@@ -33,7 +45,7 @@ def findMedianSortedArrays(nums1, nums2):
             else:
                 #if it is even we need the average of the two middle
                 return (float(max(left1, left2))+float(min(right1,right2))) / 2.0
-        #if the partition is not correct, then adjust it
+        #if the partition is not correct, then adjust it by moving it higher or lower
         elif left1 > right2:
             partMax = split1 - 1
         else:
@@ -41,7 +53,7 @@ def findMedianSortedArrays(nums1, nums2):
     return 0
 if __name__ == "__main__":
     nums1 = [1, 3, 5, 8, 9]
-    nums2 = [2, 10, 25, 1000, 2000, 23082934]
+    nums2 = []
 
     median = findMedianSortedArrays(nums1, nums2)
     print(median)
