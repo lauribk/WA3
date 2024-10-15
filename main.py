@@ -6,7 +6,7 @@ def findMedianSortedArrays(nums1, nums2):
     partMax = m
 
     totalLength = m + n
-    mid = (m + n + 1)/2
+    mid = (m + n + 1) // 2
     
     while partMin <= partMax:
         split1 = (partMin + partMax) // 2
@@ -40,7 +40,8 @@ def findMedianSortedArrays(nums1, nums2):
             partMin = split1 + 1
     return 0
 if __name__ == "__main__":
-    nums1 = [1,3]
-    nums2 = [2]
+    nums1 = [1, 3, 5, 8, 9]
+    nums2 = [2, 10, 25, 1000, 2000, 23082934]
 
-    print(findMedianSortedArrays(nums1, nums2))
+    median = findMedianSortedArrays(nums1, nums2)
+    print(median)
