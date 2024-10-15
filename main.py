@@ -10,6 +10,10 @@ def findMedianSortedArrays(nums1, nums2):
     m = len(nums1)
     n = len(nums2)
 
+    #check to find smallest array for BONUS QUESTION optimization
+    if m > n:
+        return (findMedianSortedArrays(nums2, nums1))
+
     #interval for best partition, will hone into the correct partition
     partMin = 0
     partMax = m
@@ -52,8 +56,8 @@ def findMedianSortedArrays(nums1, nums2):
             partMin = split1 + 1
     return 0
 if __name__ == "__main__":
-    nums1 = []
-    nums2 = [2,5]
+    nums1 = [1,2]
+    nums2 = [3,10]
 
     m = len(nums1)
     n = len(nums2)
