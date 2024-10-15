@@ -17,23 +17,6 @@ def findMedianSortedArrays(nums1, nums2):
     totalLength = m + n
     # using integer addition since the values will be used for the index and must be integers
     mid = (m + n + 1) // 2
-    
-    #deal with edge case - one array is empty
-    if m == 0:
-        if n % 2 == 1:
-            #if it is odd, then the median is in the middle
-            return nums2[(n)//2]
-        else:
-            #if it is even we need the average of the two middle
-            return (float(nums2[(n)//2])+float(nums2[((n)//2)+1]) / 2.0)
-
-    if n == 0:
-        if m % 2 == 1:
-            #if it is odd, then the median is in the middle
-            return nums1[(m)//2]
-        else:
-            #if it is even we need the average of the two middle
-            return (float(nums1[(m)//2])+float(nums1[((m)//2)+1]) / 2.0)
 
     #binary search until a correct partition for each array is found
     while partMin <= partMax:
@@ -70,7 +53,27 @@ def findMedianSortedArrays(nums1, nums2):
     return 0
 if __name__ == "__main__":
     nums1 = [1,2]
-    nums2 = [3,4]
+    nums2 = []
 
-    median = findMedianSortedArrays(nums1, nums2)
-    print(median)
+    m = len(nums1)
+    n = len(nums2)
+
+    #deal with edge case - one array is empty
+    if m == 0:
+        if n % 2 == 1:
+            #if it is odd, then the median is in the middle
+            print(nums2[(n)//2])
+        else:
+            #if it is even we need the average of the two middle
+            print((float(nums2[(n)//2])+float(nums2[((n)//2)+1]) / 2.0))
+
+    elif n == 0:
+        if m % 2 == 1:
+            #if it is odd, then the median is in the middle
+            print(nums1[(m)//2])
+        else:
+            #if it is even we need the average of the two middle
+            print((float(nums1[(m)//2])+float(nums1[((m)//2)+1]) / 2.0))
+    else:
+        median = findMedianSortedArrays(nums1, nums2)
+        print(median)
